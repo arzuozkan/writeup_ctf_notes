@@ -1,16 +1,3 @@
-# Crackme1
-
-Verilen dosyayı indirip çalıştırınca bize flag değerini veriyor. Ama neden? :D
-
-Dosyanın türünü mimarisini, file komutu ile kontrol edilebilir.  
-
-![](pics/Pasted%20image%2020230129120104.png)
-
-
-64bit ELF ve not stripped. 
-
-![](pics/Pasted%20image%2020230129131540.png)
-
 
 # Crackme2
 
