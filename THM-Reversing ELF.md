@@ -111,6 +111,58 @@ Sonrasında yapılan değişiklikleri kaydetmek için File -> Export  Program il
 
 ![](pics/Pasted%20image%2020230130170945.png)
 
+# Crackme5
+
+![](pics/Pasted%20image%2020230131003316.png)
+
+
+# Crackme6
+
+![](pics/Pasted%20image%2020230203101858.png)
+
+ghidra aracı ile birlikte açtığımız zaman main içerisinde compare_pwd() fonksiyonu ile girilen parola değerinin doğrulaması yapıldığı görülecektir. Doğrulama yapılırken my_secure_test isimli metot kullanılmaktadır. Burada yapılan işlem, girilen parola değerinin her bir karakteri belirli değerlere eşitliği kontrol edilir.
+
+![](pics/Pasted%20image%2020230203105135.png)
+
+# Crackme7
+
+Programa geçersiz inputlar verildiğinde farklı uyarılarda bulunmaktadır.
+
+![](pics/Pasted%20image%2020230203122003.png)
+
+Main fonksiyon içerisini incelediğimiz zaman seçenek 3 için iki farklı koşul bulunmaktadır. 
+> `cmp eax, 3`
+>`jne 0x8048662` 
+
+girilen değer 3'e eşitse "Goodbye" mesajını ekrana yazar ve programdan çıkar. Burada jne, eşitliğin sağlanmaması diğer bir deyişle zero flag set edilmediği durumda çalışır. jump edilen adres takip edildiğinde
+
+> `cmp eax, 0x7a69 # decimal değeri 3117 ile eşitliği kontrol edilir`
+
+Eğer eşitse, ilerleyen kod satırında giveFlag() metodunu çağırmaktadır.
+
+
+![](pics/Pasted%20image%2020230203123328.png)
+
+Bu işlem ghidra gibi diğer araçlarla daha kolay anlaşılabilir. Main içerisinde flag değerini veren if bloğu görseldeki gibidir.
+
+![](pics/Pasted%20image%2020230203125803.png)
+
+Bulunan değer girildiğinde flag değeri elde edilir.
+
+![](pics/Pasted%20image%2020230203125636.png)
+
+Main içerisinde kullanıcıdan alınan parola değeri atoi ile string bir değeri integer tipine dönüştürmektedir. Bu değer ile verilen hexadecimal değeri karşılaştırmaktadır. Diğer araçlarda, 
+
+> `cmp eax, 0xcafef00d` 
+
+olarak gösterilebilir. Bu değer, signed decimal olarak çevrildiğinde -889262067 olmaktadır.
+
+![](pics/Pasted%20image%2020230203140935.png)
+
+Bulunan değer input olarak girildiğinde flag değerine ulaşılmaktadır.
+
+![](pics/Pasted%20image%2020230203142656.png)
+
 
 # Kaynak
 - https://refspecs.linuxbase.org/LSB_3.1.0/LSB-generic/LSB-generic/baselib---libc-start-main-.html
