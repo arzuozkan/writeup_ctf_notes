@@ -102,6 +102,54 @@ Sonrasında yapılan değişiklikleri kaydetmek için File -> Export  Program il
 
 ![](pics/Pasted%20image%2020230131003316.png)
 
+>r2 -Ad crackme5
+
+komutu ile debug modda programı radare2 ile başlatıyoruz.
+
+![](pics/Pasted%20image%2020230205143040.png)
+
+> afl
+
+ile içerisindeki fonksiyonlar listelenir. Daha detaylı analiz yapılarak farklı fonksyionlar bulunabilir.
+
+![](pics/Pasted%20image%2020230205143122.png)
+
+>pdf @ main 
+
+main fonksiyonunu inceleyelim. Başlangıçta bazı değişkenler tanımlanmış
+
+![](pics/Pasted%20image%2020230205144010.png)
+
+programın ilerleyen kısmında kullanıcıdan input istiyor. Alınan değeri başka birdeğer ile karşılaştırıyor ve sonuca göre koşullar çalışıyor.
+
+![](pics/Pasted%20image%2020230205144548.png)
+
+strcmp_ fonksiyonun parametrelerinin (rsi,rdi) şeklinde olduğu görülebilir. 
+
+>`0x0040082f call sym.strcmp_`  breakpoint koyalım. dc komutu ile programı çalıştıralım.
+
+![](pics/Pasted%20image%2020230205145427.png)
+
+İstenen inputu girdiğimiz zaman strcmp_ fonksiyonun çağrıldığı adreste duracaktır. rsi ve rdi registerlarının içerisindeki değer ps(print string) komutunu kullanarak görülebilir.
+
+![](pics/Pasted%20image%2020230205145618.png)
+
+hexdump görüntülemek istersek px komutu kullanılabilir.
+
+![](pics/Pasted%20image%2020230203161102.png)
+
+Not: rsi(register source index) ve rdi(register destination index) 
+
+>`0x00400821      488d55d0       lea rdx, [var_30h]`
+> `0x00400825      488d45b0       lea rax, [var_50h]`
+> `0x00400829      4889d6         mov rsi, rdx`
+> `0x0040082c      4889c7         mov rdi, rax`
+> `0x0040082f     e8a2feffff     call sym.strcmp_`
+
+Aslında stack içerisine bakıldığında var_30h değeri parola değerini tutuyor. Adres olarak rbp-0x30.  Gelen input ise edi ile alındıktan sonra var_50h üzerine yazılıyor ve adresi rbp-0x50.
+
+![](pics/Pasted%20image%2020230205150318.png)
+
 
 # Crackme6
 
@@ -137,6 +185,8 @@ Bu işlem ghidra gibi diğer araçlarla daha kolay anlaşılabilir. Main içeris
 Bulunan değer girildiğinde flag değeri elde edilir.
 
 ![](pics/Pasted%20image%2020230203125636.png)
+
+# Crackme8
 
 Main içerisinde kullanıcıdan alınan parola değeri atoi ile string bir değeri integer tipine dönüştürmektedir. Bu değer ile verilen hexadecimal değeri karşılaştırmaktadır. Diğer araçlarda, 
 
