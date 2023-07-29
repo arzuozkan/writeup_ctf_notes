@@ -1,8 +1,5 @@
 # re_notes
-reverse engineering and exploitation notes with ctf (beginner and turkish)
+reverse engineering, android and web exploitation notes with ctf (beginner and turkish)
 
-(reverse konularını ctflerle pratik yapacağım repo)
+( ctflerle pratik yaptığım repo)
 
-# Current 
-
-> THM Rverseing ELF odası 

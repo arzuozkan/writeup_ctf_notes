@@ -49,7 +49,10 @@ Not : x86 mimarisinde argümanlar stack içerisinde tutulur.
 
 ### Common Instructions
 
->- mov source, dest 
+>- mov source, dest . 3 türde gerçekleşir
+>1.  register to register
+>2. memory to register vise versa
+>3. immediate to register or immediate to  memory
 >`mov rax, rdx # rdx'te bulunan veriyi rax'e geçirir
 >`mov rax, [rdx] # rdx'in gösterdiği değeri rax'a taşır`
 
@@ -65,13 +68,24 @@ Not : x86 mimarisinde argümanlar stack içerisinde tutulur.
 >- push , stacke 8 bytes büyür (x86 sistemlerde 4 bytes)
 >`push rax # rax içerisindeki değer stack'in en üstünde bulunur.`
 
+![](pics/Pasted%20image%2020230214181845.png)
+
+
 > - pop, stackin en üst değerini stackten çıkartır.
 >`pop rax`
+
+![](pics/Pasted%20image%2020230214182029.png)
+
+RSP register değeri yukarıya doğru giderken artar( Low to High adres göstergesinde) . OpenSecurityTraining2: Arch1001 kurs (Level 1) içeriğinden örnek soru, 57eadfa57 değerin adresi rsp+0x18 veya rbp-0x08 olarak idafe edilebilir.
+
+![](pics/Pasted%20image%2020230516150530.png)
+
+
 
 >- jmp, verilen adrese gider.
 >`jump 0x602010 # verilen adrese gider ve oradaki kodu çalıştırır`
 
-
+> -call, farklı bir fonksiyon çağırır. Stack içerisine sıradaki instructipon adresini push eder ve rip değerini verilen fonkisyonun adresi ile değiştirir.
 
 
 
@@ -104,11 +118,9 @@ hafızanın otomatik olarak yönetilmediği yer. Heap üzerinde yer ayırtmak i�
 
 Her assembly programı içerisinde 3 parçaya bölünmektedir.
 
-1- Data section: bu kısımda tanımlanan değişmeyecek değerler ve veriler-  constantlar bulunur.
-2- BSS Section: değeri belirtilmemiş değişkenleri içerir
-3- Text Section: kod bölümünün bağşlangıç noktasını kernele söyler.
-
-
+1- Data section: bu kısımda tanımlanmış gloabl değerler bulunur.
+2- BSS Section: tanımlanmamış global değişkenleri içerir
+3- Text Section: program instructionları içerir ve programın başlangıç noktasını içerir.
 
 
 
@@ -123,3 +135,22 @@ ldr, r4 \[r10] @ r10 içeriğini r4'e yükler eğer decimal bir değer ise .
 str, r9, \[r4] @ r9 içerisindekileri r4 adresine depolar mesela r9= 0x02 ise bu değer r4'un adresinde tutulur.
 
 Not: @ sembolünden sonra yazılanlar yorum olarak kabul edilir.  
+
+## Call Procedure
+
+`call` instruction programdaki farklı bir fonkisyonun çağırılma işlemidir. Stack içerisine bir sonraki instruction adresini push eder ve RIP register değerini verilen adres olarak değiştirir.
+
+`ret` instruction 2 türü bulunur.
+1. `ret` , pop the top of stack into RIP (ayrıca pop RSP artırmaktadır)
+2. `ret CONST_NUM` ,  pop top o f the stack into RIP and add CONST_NUM to RSP
+
+### Intel vs AT&T Syntax
+
+Intel : Destination <- Source
+> `add rsp, 0x14` , rsp=rsp+0x14
+
+AT&T : Source -> Destination
+> `add $0x14, %rsp`,  0x14+rsp=rsp
+
+
+
