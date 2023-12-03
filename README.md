@@ -5,6 +5,7 @@ reverse engineering, android and web exploitation notes with ctf (beginner and t
 
 #  <img src="https://github.com/arzuozkan/re_notes/assets/48025290/d5f51b9f-ec2f-438b-8f32-fc704adf4587" alt="new_icon" width="50"> Latest Added
 
+THM - [AdventOfCyber 2023](https://github.com/arzuozkan/re_notes/blob/master/web%20exploitation/thm/aoc/aoc-23.md) <br> 
 THM - [Retro](https://github.com/arzuozkan/re_notes/blob/master/web%20exploitation/thm/Retro.md) <br>
 THM - [Bookstore](https://github.com/arzuozkan/re_notes/edit/master/web%20exploitation/thm/Bookstore.md) <br>
 Hack the bOO 2023 - [Web/Candy Vault write up](https://github.com/arzuozkan/re_notes/blob/master/web%20exploitation/htb/CandyVault%20-%20Hack%20the%20Boo%20Practice%202023.md)
