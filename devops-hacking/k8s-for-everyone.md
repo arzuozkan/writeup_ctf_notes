@@ -51,10 +51,16 @@ Bu zafiyeti kullanarak nasıl sisteme erişim sağlanır, onu bulmamız gerekiyo
 
 ![image](https://github.com/user-attachments/assets/d8a50a85-0ae6-4a11-8c27-7b3df25da676)
 
-vagrant kullanıcısı olarak bir oturum elde edildi. `sudo su` komutunu çalıştırınca root yetkilerine sahip olundu. /etc/passwd dosyası içeriğine bakıldığı zaman kubernetes servislerinin çalıştığı anlaşılabilir.
+vagrant kullanıcısı olarak bir oturum elde edildi. `sudo su` komutunu çalıştırınca root yetkilerine sahip olundu. /etc/passwd dosyası içeriğine bakıldığı zaman kubernetes servislerinin çalıştığı anlaşılabilir. Benzer şekilde sistemde çalışan uygulamalar kontrol edilebilir.
+
+![image](https://github.com/user-attachments/assets/f4704d5e-2e7e-4d97-872f-3aa2dbc0c225)
 
 ## Find Secret
-İstenen bir secret değeri var ve kubernetes ortamında hassas veriler için secret objesi kullanılmaktadır.
+İstenen bir secret değeri var ve kubernetes ortamında hassas veriler için secret objesi kullanılmaktadır. k0s, kubernetes ortamını kurmak için kullanılan araçlardan birisidir. Kullanımı için (k0s dokümantasyonu)[https://docs.k0sproject.io/stable/] incelenebilir. `k0s kubectl get secret` komutu ile secret objeleri listelenmektedir. (İlk başta iletişim sağlanmadı gibi hata mesajı alabilirsiniz, lab ortamından dolayı çalışan servislerle alakalı olabilir ve bazen 6443 portu kapalı olabilir)
+
+![image](https://github.com/user-attachments/assets/311be612-ac45-4a0d-99a5-f489b89d2013)
+
+
 
 ## Kaynaklar
 - https://cloud.hacktricks.xyz/pentesting-cloud/kubernetes-security/pentesting-kubernetes-services
