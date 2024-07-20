@@ -40,7 +40,7 @@ Diğer portlara bakalım 3000 portu açıktı. Grafana login sayfası ile karş�
 ![image](https://github.com/user-attachments/assets/7d1d9b47-1ad4-4b02-b1b0-ce33431db8c4)
 ![image](https://github.com/user-attachments/assets/3ce82ab4-699a-42c4-821a-83ae9adcd341)
 
-Burada da istenilen parola değeri bulunmuş oldu. CVE-2021-43798 zafiyeti için birçok exploit kodu mevcut. Burada kullanılan, (taythebot/CVE-2021-43798)[https://github.com/taythebot/CVE-2021-43798] golang ile geliştirilmiş bir araç. Kullanımı incelendiğinde dosya okumanın dışında veritabanı ve yapılandırma dosyalarını dump edebilme gibi özelliği mevcut
+Burada da istenilen parola değeri bulunmuş oldu. CVE-2021-43798 zafiyeti için birçok exploit kodu mevcut. Burada kullanılan, [taythebot/CVE-2021-43798](https://github.com/taythebot/CVE-2021-43798) golang ile geliştirilmiş bir araç. Kullanımı incelendiğinde dosya okumanın dışında veritabanı ve yapılandırma dosyalarını dump edebilme gibi özelliği mevcut
 `go run exploit.go -target http://10.10.125.83:3000 -dump-config -output defaults.ini` komutu ile grafana yapılandırma ayarlarına erişilebilir. Bu dosyayı incelerken varsayılan giriş bilgilerinin değiştirilmediğini görebilirsiniz. admin:admin bilgileri ile grafana arayüzünden giriş yapılabiliyor.
 
 Açık portlar içerisinde 22 SSH portunun da açık olduğunu hatırlayalım. ssh anahtarına erişim sağlarsak shell alabilirdik belki ancak erişilemiyor. 
@@ -56,7 +56,7 @@ vagrant kullanıcısı olarak bir oturum elde edildi. `sudo su` komutunu çalı�
 ![image](https://github.com/user-attachments/assets/f4704d5e-2e7e-4d97-872f-3aa2dbc0c225)
 
 ## Find Secret
-İstenen bir secret değeri var ve kubernetes ortamında hassas veriler için secret objesi kullanılmaktadır. k0s, kubernetes ortamını kurmak için kullanılan araçlardan birisidir. Kullanımı için (k0s dokümantasyonu)[https://docs.k0sproject.io/stable/] incelenebilir. `k0s kubectl get secret` komutu ile secret objeleri listelenmektedir. (İlk başta iletişim sağlanmadı gibi hata mesajı alabilirsiniz, lab ortamından dolayı çalışan servislerle alakalı olabilir ve bazen 6443 portu kapalı olabilir)
+İstenen bir secret değeri var ve kubernetes ortamında hassas veriler için secret objesi kullanılmaktadır. k0s, kubernetes ortamını kurmak için kullanılan araçlardan birisidir. Kullanımı için [k0s dokümantasyonu](https://docs.k0sproject.io/stable/) incelenebilir. `k0s kubectl get secret` komutu ile secret objeleri listelenmektedir. (İlk başta iletişim sağlanmadı gibi hata mesajı alabilirsiniz, lab ortamından dolayı çalışan servislerle alakalı olabilir ve bazen 6443 portu kapalı olabilir)
 
 ![image](https://github.com/user-attachments/assets/311be612-ac45-4a0d-99a5-f489b89d2013)
 
