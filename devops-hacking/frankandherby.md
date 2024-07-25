@@ -1,4 +1,4 @@
-# Frank & Herby make an app
+# Frank & Herby make an app - THM WriteUp
 tryhackme room: https://tryhackme.com/r/room/frankandherby
 
 ## Nmap Taraması
@@ -62,6 +62,7 @@ Farklı çözüm yöntemlerinde gördüklerim, kubernetes enumeration araçları
 
 ## Kaynaklar
 - https://exploit-notes.hdks.org/exploit/container/kubernetes/microk8s-pentesting/
-- https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K04-policy-enforcement 
+- https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K04-policy-enforcement
+- https://www.container-security.site/general_information/tools_list.html
 
 
