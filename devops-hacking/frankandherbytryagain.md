@@ -93,3 +93,4 @@ Ek olarak bu teknik MITRE ATT&CK matrisinde Yetki Yükseltme (Privilege Escalati
 ## Kaynaklar
 - https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K04-policy-enforcement
 - https://cloud.hacktricks.xyz/pentesting-cloud/kubernetes-security/abusing-roles-clusterroles-in-kubernetes/pod-escape-privileges
+- https://bishopfox.com/blog/kubernetes-pod-privilege-escalation
